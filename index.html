@@ -10,7 +10,70 @@
 </head>
 
 <body>
+    <header class="wallet">
+        <div class="wallet__info">
+            <h3 class="wallet__title">Total balance</h3>
 
+            <h1 class="wallet__value">+ 32,058.98</h1>
+        </div>
+
+        <div class="wallet__details">
+            <div class="wallet__incomes">
+                <div class="wallet__incomes--title">Incomes</div>
+                <div class="wallet__incomes--value">+ 4,300.00</div>
+                <div class="wallet__incomes--percentages">&nbsp;</div>
+            </div>
+
+            <div class="wallet__expenses">
+                <div class="wallet__expenses--title">Expenses</div>
+                <div class="wallet__expenses--value">- 1,843.45</div>
+                <div class="wallet__expenses--percentages">42%</div>
+            </div>
+        </div>
+
+    </header>
+
+    <main class="transactions">
+        <form action="" class="transactions__form">
+            <select class="transactions__type">
+                <option value="inc" selected>+</option>
+                <option value="exp">_</option>
+            </select>
+            <input type="text" class="transactions__description" placeholder="Add description">
+            <input type="number" class="transactions__value" placeholder="Value">
+            <button type="submit" class="transactions__btn">Dodaj</button>
+        </form>
+
+        <div class="container">
+            <h3 class="transactions__title">Transactions</h3>
+
+            <div class="transactions__list">
+                <div class="item item__income" id="income-0">
+                    <div class="item__icon">Ikona</div>
+                    <div class="item__info">
+                        <div class="item__description">Sold car</div>
+                        <div class="item__date">June 3, 2019</div>
+                    </div>
+                    <div class="item__value">+ 2,100.100</div>
+                    <div class="item__delete">
+                        <button class="item__delete--btn">Usun</button>
+                    </div>
+                </div>
+
+                <div class="item item__expense" id="expense-0">
+                    <div class="item__icon">Ikona</div>
+                    <div class="item__info">
+                        <div class="item__description">New laptop</div>
+                        <div class="item__date">June 3, 2019</div>
+                    </div>
+                    <div class="item__value">- 2,100.100</div>
+                    <div class="item__delete">
+                        <button class="item__delete--btn">Usun</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
 
 </html>
