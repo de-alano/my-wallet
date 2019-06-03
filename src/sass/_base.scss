@@ -1,0 +1,28 @@
+// COLORS
+$color-white: #ffffff;
+$color-inc: #00cec9;
+$color-exp: #ff7675;
+$color-gray: #dfe6e9;
+
+
+// FONTS
+$font: 'Work Sans', sans-serif;
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+body {
+    font-family: $font;
+    font-weight: 400;
+    line-height: 1.5;
+    background-color: $color-gray;
+}

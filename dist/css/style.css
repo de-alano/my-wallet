@@ -1,0 +1,76 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0; }
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; }
+
+body {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  background-color: #dfe6e9; }
+
+.wallet {
+  padding: 3rem 0;
+  background-image: url("../images/bg-small.jpg");
+  background-size: cover;
+  color: #ffffff; }
+  .wallet__info {
+    margin-top: 3rem; }
+  .wallet__title {
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    font-weight: 200;
+    letter-spacing: 1px;
+    text-align: center; }
+  .wallet__value {
+    text-align: center;
+    font-size: 4rem;
+    margin-top: -0.6rem;
+    letter-spacing: 2px; }
+  .wallet__details {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem; }
+  .wallet__incomes, .wallet__expenses {
+    width: 45%;
+    text-align: center;
+    padding: .5rem 0; }
+  .wallet__incomes {
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    background-color: #00cec9; }
+  .wallet__expenses {
+    border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+    background-color: #ff7675; }
+  .wallet__incomes--title, .wallet__expenses--title {
+    font-size: 1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase; }
+  .wallet__incomes--value, .wallet__expenses--value {
+    font-size: 1.5rem;
+    letter-spacing: 1px; }
+
+.transactions {
+  background-color: #dfe6e9; }
+  .transactions__form {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: #ffffff;
+    padding: 1rem 0; }
+  .transactions__description, .transactions__value, .transactions__type {
+    display: block;
+    border: 1px solid #00cec9;
+    padding: 0.5rem 1rem;
+    font-family: "Work Sans", sans-serif; }
+  .transactions__description {
+    width: 40%; }
+  .transactions__value {
+    width: 10%; }

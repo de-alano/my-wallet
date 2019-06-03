@@ -1,0 +1,97 @@
+.wallet {
+    padding: 3rem 0;
+    background-image: url('../images/bg-small.jpg');
+    background-size: cover;
+    color: $color-white;
+    // background-position: center;
+
+    &__info {
+        margin-top: 3rem;
+    }
+
+    &__title {
+        text-transform: uppercase;
+        font-size: 1.2rem;
+        font-weight: 200;
+        letter-spacing: 1px;
+        text-align: center;
+    }
+
+    &__value {
+        text-align: center;
+        font-size: 4rem;
+        margin-top: -0.6rem;
+        letter-spacing: 2px;
+    }
+
+    &__details {
+        margin-top: 2rem;
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.2rem;
+    }
+
+    &__incomes, &__expenses {
+        width: 45%;
+        text-align: center;
+        padding: .5rem 0;
+    }
+
+    &__incomes {
+        border-top-right-radius: 2rem;
+        border-bottom-right-radius: 2rem;
+        background-color: $color-inc;
+    }
+
+    &__expenses {
+        border-top-left-radius: 2rem;
+        border-bottom-left-radius: 2rem;
+        background-color: $color-exp;
+    }
+
+    &__incomes--title, &__expenses--title {
+        font-size: 1rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+
+    &__incomes--value, &__expenses--value {
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+    }
+}
+
+.transactions {
+    background-color: $color-gray;
+
+    &__form {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        background-color: $color-white;
+        padding: 1rem 0;
+    }
+
+    &__type {
+        // width: 10%;
+    }
+
+    &__description, &__value, &__type {
+        display: block;
+        border: 1px solid $color-inc;
+        padding: 0.5rem 1rem;
+        font-family: $font;
+    }
+
+    &__description {
+        width: 40%;
+    }
+
+    &__value {
+        width: 10%;
+    }
+
+    &__btn {
+
+    }
+}
