@@ -1,0 +1,14 @@
+{
+  "name": "my-wallet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass": "node-sass src/sass/main.scss dist/css/style.css -w"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^4.12.0"
+  }
+}
