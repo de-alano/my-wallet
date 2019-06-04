@@ -2,7 +2,10 @@
 $color-white: #ffffff;
 $color-inc: #00cec9;
 $color-exp: #ff7675;
-$color-gray: #dfe6e9;
+$color-light-gray: #dfe6e9;
+$color-dark-gray: #7f8c8d;
+$color-light-blue: #1C60A9;
+$color-dark-blue: #061E42;
 
 
 // FONTS
@@ -24,5 +27,6 @@ body {
     font-family: $font;
     font-weight: 400;
     line-height: 1.5;
-    background-color: $color-gray;
+    background-image: linear-gradient(to right, $color-dark-blue, $color-light-blue);
+    min-height: 100vh;
 }

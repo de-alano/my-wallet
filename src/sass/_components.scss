@@ -1,12 +1,13 @@
 .wallet {
-    padding: 3rem 0;
-    background-image: url('../images/bg-small.jpg');
+    padding: 4rem 0;
+    background-image: url('../images/bg.jpg');
     background-size: cover;
+    background-position: center;
     color: $color-white;
     // background-position: center;
 
     &__info {
-        margin-top: 3rem;
+        // margin-top: 3rem;
     }
 
     &__title {
@@ -35,18 +36,17 @@
         width: 45%;
         text-align: center;
         padding: .5rem 0;
+        background-color: rgba($color-white, .1);
     }
 
     &__incomes {
         border-top-right-radius: 2rem;
         border-bottom-right-radius: 2rem;
-        background-color: $color-inc;
     }
 
     &__expenses {
         border-top-left-radius: 2rem;
         border-bottom-left-radius: 2rem;
-        background-color: $color-exp;
     }
 
     &__incomes--title, &__expenses--title {
@@ -59,39 +59,162 @@
         font-size: 1.5rem;
         letter-spacing: 1px;
     }
+
+    &__incomes--value {
+        color: $color-inc;
+    }
+
+    &__expenses--value {
+        color: $color-exp;
+    }
 }
 
 .transactions {
-    background-color: $color-gray;
 
     &__form {
+        box-sizing: border-box;
         width: 100%;
         display: flex;
         justify-content: space-between;
-        background-color: $color-white;
-        padding: 1rem 0;
-    }
-
-    &__type {
-        // width: 10%;
+        align-items: center;
+        background-color: $color-light-gray;
+        padding: 1rem;
     }
 
     &__description, &__value, &__type {
         display: block;
-        border: 1px solid $color-inc;
-        padding: 0.5rem 1rem;
+        border: 1px solid $color-dark-gray;
         font-family: $font;
+        font-size: 1.2rem;
+        padding: 0.5rem 1rem;
+        color: $color-dark-blue;
+        transition: border .2s ease-out;
+
+        &:focus {
+            outline: none;
+            border: 1px solid $color-inc;
+        }
+    }
+
+    &__type {
+        width: 4rem;
+        padding: 0.5rem 0 0.5rem 0.5rem;
+        text-align: center;
     }
 
     &__description {
-        width: 40%;
+        width: 45%;
     }
 
     &__value {
-        width: 10%;
+        width: 17%;
+        text-align: center;
     }
 
     &__btn {
+        border: none;
+        background-color: $color-light-gray;
+        cursor: pointer;
+    }
 
+    &__btn__icon {
+        width: 2.5rem;
+    }
+
+    &__title {
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: $color-light-gray;
+        font-weight: 200;
+        text-align: center;
+        padding: 1rem 0;
+    }
+}
+
+.transactions__list {
+
+}
+
+.item {
+    background-color: $color-white;
+    box-sizing: border-box;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+
+    &:not(:last-child) {
+        margin-bottom: 1rem;
+    }
+
+    &__income {
+        border-top-right-radius: 2rem;
+        border-bottom-right-radius: 2rem;
+    }
+
+    &__expense {
+        margin-left: 10%;
+        border-top-left-radius: 2rem;
+        border-bottom-left-radius: 2rem;
+    }
+
+    &__icon {
+        height: 1.5rem;
+        transform: rotate(45deg);
+
+        &--inc {
+        }
+
+        &--exp {
+            order: 2;
+        }
+    }
+
+
+    &__info {
+        text-align: center;
+    }
+
+    &__description {
+        font-size: 1.3rem;
+        color: $color-dark-blue;
+        font-weight: 600;
+
+        &--inc {
+
+        }
+
+        &--exp {
+            order: 1;
+        }
+    }
+
+    &__date {
+        color: $color-light-blue;
+        font-size: 1rem;
+        margin-top: -0.3rem;
+    }
+
+    &__value {
+        color: $color-dark-blue;
+        font-size: 1.5rem;
+
+        &--inc {
+        }
+
+        &--exp {
+            order: -1;
+        }
+    }
+
+    &__delete {
+        order: 3;
+        display: none;
+    }
+
+    &__delete--btn {
+        display: none;
     }
 }

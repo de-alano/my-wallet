@@ -12,15 +12,15 @@ body {
   font-family: "Work Sans", sans-serif;
   font-weight: 400;
   line-height: 1.5;
-  background-color: #dfe6e9; }
+  background-image: linear-gradient(to right, #061E42, #1C60A9);
+  min-height: 100vh; }
 
 .wallet {
-  padding: 3rem 0;
-  background-image: url("../images/bg-small.jpg");
+  padding: 4rem 0;
+  background-image: url("../images/bg.jpg");
   background-size: cover;
+  background-position: center;
   color: #ffffff; }
-  .wallet__info {
-    margin-top: 3rem; }
   .wallet__title {
     text-transform: uppercase;
     font-size: 1.2rem;
@@ -40,15 +40,14 @@ body {
   .wallet__incomes, .wallet__expenses {
     width: 45%;
     text-align: center;
-    padding: .5rem 0; }
+    padding: .5rem 0;
+    background-color: rgba(255, 255, 255, 0.1); }
   .wallet__incomes {
     border-top-right-radius: 2rem;
-    border-bottom-right-radius: 2rem;
-    background-color: #00cec9; }
+    border-bottom-right-radius: 2rem; }
   .wallet__expenses {
     border-top-left-radius: 2rem;
-    border-bottom-left-radius: 2rem;
-    background-color: #ff7675; }
+    border-bottom-left-radius: 2rem; }
   .wallet__incomes--title, .wallet__expenses--title {
     font-size: 1rem;
     letter-spacing: 1px;
@@ -56,21 +55,102 @@ body {
   .wallet__incomes--value, .wallet__expenses--value {
     font-size: 1.5rem;
     letter-spacing: 1px; }
+  .wallet__incomes--value {
+    color: #00cec9; }
+  .wallet__expenses--value {
+    color: #ff7675; }
 
-.transactions {
-  background-color: #dfe6e9; }
-  .transactions__form {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    background-color: #ffffff;
-    padding: 1rem 0; }
-  .transactions__description, .transactions__value, .transactions__type {
-    display: block;
-    border: 1px solid #00cec9;
-    padding: 0.5rem 1rem;
-    font-family: "Work Sans", sans-serif; }
-  .transactions__description {
-    width: 40%; }
-  .transactions__value {
-    width: 10%; }
+.transactions__form {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #dfe6e9;
+  padding: 1rem; }
+
+.transactions__description, .transactions__value, .transactions__type {
+  display: block;
+  border: 1px solid #7f8c8d;
+  font-family: "Work Sans", sans-serif;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  color: #061E42;
+  transition: border .2s ease-out; }
+  .transactions__description:focus, .transactions__value:focus, .transactions__type:focus {
+    outline: none;
+    border: 1px solid #00cec9; }
+
+.transactions__type {
+  width: 4rem;
+  padding: 0.5rem 0 0.5rem 0.5rem;
+  text-align: center; }
+
+.transactions__description {
+  width: 45%; }
+
+.transactions__value {
+  width: 17%;
+  text-align: center; }
+
+.transactions__btn {
+  border: none;
+  background-color: #dfe6e9;
+  cursor: pointer; }
+
+.transactions__btn__icon {
+  width: 2.5rem; }
+
+.transactions__title {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #dfe6e9;
+  font-weight: 200;
+  text-align: center;
+  padding: 1rem 0; }
+
+.item {
+  background-color: #ffffff;
+  box-sizing: border-box;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem; }
+  .item:not(:last-child) {
+    margin-bottom: 1rem; }
+  .item__income {
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem; }
+  .item__expense {
+    margin-left: 10%;
+    border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem; }
+  .item__icon {
+    height: 1.5rem;
+    transform: rotate(45deg); }
+    .item__icon--exp {
+      order: 2; }
+  .item__info {
+    text-align: center; }
+  .item__description {
+    font-size: 1.3rem;
+    color: #061E42;
+    font-weight: 600; }
+    .item__description--exp {
+      order: 1; }
+  .item__date {
+    color: #1C60A9;
+    font-size: 1rem;
+    margin-top: -0.3rem; }
+  .item__value {
+    color: #061E42;
+    font-size: 1.5rem; }
+    .item__value--exp {
+      order: -1; }
+  .item__delete {
+    order: 3;
+    display: none; }
+  .item__delete--btn {
+    display: none; }

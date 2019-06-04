@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="https://kit.fontawesome.com/86efad4983.js"></script>
+    <link rel="shortcut icon" type="image/png" href="dist/images/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:200,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="dist/css/style.css">
 </head>
@@ -40,7 +42,8 @@
             </select>
             <input type="text" class="transactions__description" placeholder="Add description">
             <input type="number" class="transactions__value" placeholder="Value">
-            <button type="submit" class="transactions__btn">Dodaj</button>
+            <button type="submit" class="transactions__btn"><img src="dist/images/ok.svg"
+                    class="transactions__btn__icon"></button>
         </form>
 
         <div class="container">
@@ -48,24 +51,57 @@
 
             <div class="transactions__list">
                 <div class="item item__income" id="income-0">
-                    <div class="item__icon">Ikona</div>
+                    <img src="dist/images/arrow-inc.svg" alt="" class="item__icon item__icon--inc">
                     <div class="item__info">
-                        <div class="item__description">Sold car</div>
+                        <div class="item__description item__description--inc">Sold car</div>
                         <div class="item__date">June 3, 2019</div>
                     </div>
-                    <div class="item__value">+ 2,100.100</div>
+                    <div class="item__value item__value--inc">+ 2,100.100</div>
                     <div class="item__delete">
                         <button class="item__delete--btn">Usun</button>
                     </div>
                 </div>
 
                 <div class="item item__expense" id="expense-0">
-                    <div class="item__icon">Ikona</div>
+                    <img src="dist/images/arrow-exp.svg" alt="" class="item__icon item__icon--exp">
                     <div class="item__info">
-                        <div class="item__description">New laptop</div>
+                        <div class="item__description item__description--exp">New laptop</div>
                         <div class="item__date">June 3, 2019</div>
                     </div>
-                    <div class="item__value">- 2,100.100</div>
+                    <div class="item__value item__value--exp">- 2,100.100</div>
+                    <div class="item__delete">
+                        <button class="item__delete--btn">Usun</button>
+                    </div>
+                </div>
+                <div class="item item__expense" id="expense-1">
+                    <img src="dist/images/arrow-exp.svg" alt="" class="item__icon item__icon--exp">
+                    <div class="item__info">
+                        <div class="item__description item__description--exp">iTunes Gift Card</div>
+                        <div class="item__date">June 3, 2019</div>
+                    </div>
+                    <div class="item__value item__value--exp">- 2,100.100</div>
+                    <div class="item__delete">
+                        <button class="item__delete--btn">Usun</button>
+                    </div>
+                </div>
+                <div class="item item__income" id="income-1">
+                    <img src="dist/images/arrow-inc.svg" alt="" class="item__icon item__icon--inc">
+                    <div class="item__info">
+                        <div class="item__description item__description--inc">Website Project</div>
+                        <div class="item__date">June 3, 2019</div>
+                    </div>
+                    <div class="item__value item__value--inc">+ 2,100.100</div>
+                    <div class="item__delete">
+                        <button class="item__delete--btn">Usun</button>
+                    </div>
+                </div>
+                <div class="item item__income" id="income-2">
+                    <img src="dist/images/arrow-inc.svg" alt="" class="item__icon item__icon--inc">
+                    <div class="item__info">
+                        <div class="item__description item__description--inc">Hajs za las</div>
+                        <div class="item__date">June 3, 2019</div>
+                    </div>
+                    <div class="item__value item__value--inc">+ 2,100.100</div>
                     <div class="item__delete">
                         <button class="item__delete--btn">Usun</button>
                     </div>
