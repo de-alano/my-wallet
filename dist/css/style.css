@@ -13,7 +13,13 @@ body {
   font-weight: 400;
   line-height: 1.5;
   background-image: linear-gradient(to right, #061E42, #1C60A9);
-  min-height: 100vh; }
+  min-height: 100vh;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
 
 .wallet {
   padding: 4rem 0;
@@ -41,7 +47,7 @@ body {
     width: 45%;
     text-align: center;
     padding: .5rem 0;
-    background-color: rgba(255, 255, 255, 0.1); }
+    background-color: rgba(255, 255, 255, 0.15); }
   .wallet__incomes {
     border-top-right-radius: 2rem;
     border-bottom-right-radius: 2rem; }
@@ -53,8 +59,9 @@ body {
     letter-spacing: 1px;
     text-transform: uppercase; }
   .wallet__incomes--value, .wallet__expenses--value {
-    font-size: 1.5rem;
-    letter-spacing: 1px; }
+    font-size: 2rem;
+    letter-spacing: 1px;
+    font-weight: 600; }
   .wallet__incomes--value {
     color: #00cec9; }
   .wallet__expenses--value {
@@ -67,14 +74,15 @@ body {
   justify-content: space-between;
   align-items: center;
   background-color: #dfe6e9;
-  padding: 1rem; }
+  padding: 1rem;
+  box-shadow: 0 0.5rem 2rem rgba(255, 255, 255, 0.2), 0 -0.5rem 2rem rgba(255, 255, 255, 0.2); }
 
 .transactions__description, .transactions__value, .transactions__type {
   display: block;
   border: 1px solid #7f8c8d;
   font-family: "Work Sans", sans-serif;
-  font-size: 1.2rem;
-  padding: 0.5rem 1rem;
+  font-size: 1.4rem;
+  padding: 0.8rem 1rem;
   color: #061E42;
   transition: border .2s ease-out; }
   .transactions__description:focus, .transactions__value:focus, .transactions__type:focus {
@@ -130,27 +138,39 @@ body {
   .item__icon {
     height: 1.5rem;
     transform: rotate(45deg); }
-    .item__icon--exp {
-      order: 2; }
   .item__info {
-    text-align: center; }
+    text-align: center;
+    width: 50%;
+    transition: transform 0.2s ease-out; }
   .item__description {
     font-size: 1.3rem;
     color: #061E42;
     font-weight: 600; }
-    .item__description--exp {
-      order: 1; }
   .item__date {
     color: #1C60A9;
     font-size: 1rem;
     margin-top: -0.3rem; }
   .item__value {
-    color: #061E42;
-    font-size: 1.5rem; }
+    font-size: 1.5rem;
+    transition: transform 0.2s ease-out; }
+    .item__value--inc {
+      color: #00cec9; }
     .item__value--exp {
-      order: -1; }
-  .item__delete {
-    order: 3;
-    display: none; }
+      color: #ff7675; }
   .item__delete--btn {
-    display: none; }
+    display: none;
+    background-image: url(../images/trash.svg);
+    background-position: center;
+    background-size: cover;
+    width: 1.5rem;
+    height: 2rem;
+    border: none;
+    background-color: #ffffff;
+    outline: none;
+    cursor: pointer; }
+  .item:active .item__delete--btn {
+    display: block; }
+  .item:active .item__info {
+    transform: translateX(-2rem); }
+  .item:active .item__value {
+    transform: translateX(-2rem); }

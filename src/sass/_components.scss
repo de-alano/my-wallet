@@ -36,7 +36,7 @@
         width: 45%;
         text-align: center;
         padding: .5rem 0;
-        background-color: rgba($color-white, .1);
+        background-color: rgba($color-white, .15);
     }
 
     &__incomes {
@@ -56,8 +56,9 @@
     }
 
     &__incomes--value, &__expenses--value {
-        font-size: 1.5rem;
+        font-size: 2rem;
         letter-spacing: 1px;
+        font-weight: 600;
     }
 
     &__incomes--value {
@@ -79,14 +80,15 @@
         align-items: center;
         background-color: $color-light-gray;
         padding: 1rem;
+        box-shadow: 0 .5rem 2rem rgba($color-white, 0.2), 0 -.5rem 2rem rgba($color-white, 0.2);
     }
 
     &__description, &__value, &__type {
         display: block;
         border: 1px solid $color-dark-gray;
         font-family: $font;
-        font-size: 1.2rem;
-        padding: 0.5rem 1rem;
+        font-size: 1.4rem;
+        padding: 0.8rem 1rem;
         color: $color-dark-blue;
         transition: border .2s ease-out;
 
@@ -168,13 +170,15 @@
         }
 
         &--exp {
-            order: 2;
+            // order: 2;
         }
     }
 
 
     &__info {
         text-align: center;
+        width: 50%;
+        @include transition(transform);
     }
 
     &__description {
@@ -187,7 +191,7 @@
         }
 
         &--exp {
-            order: 1;
+            // order: 1;
         }
     }
 
@@ -198,23 +202,44 @@
     }
 
     &__value {
-        color: $color-dark-blue;
         font-size: 1.5rem;
+        @include transition(transform);
 
         &--inc {
+            color: $color-inc;
         }
 
         &--exp {
-            order: -1;
+            color: $color-exp;
         }
     }
 
     &__delete {
-        order: 3;
-        display: none;
+        // order: 3;
     }
 
     &__delete--btn {
         display: none;
+        background-image: url(../images/trash.svg);
+        background-position: center;
+        background-size: cover;
+        width: 1.5rem;
+        height: 2rem;
+        border: none;
+        background-color: $color-white;
+        outline: none;
+        cursor: pointer;
+    }
+
+    &:active &__delete--btn {
+        display: block;
+    }
+
+    &:active &__info {
+        transform: translateX(-2rem);
+    }
+
+    &:active &__value {
+        transform: translateX(-2rem);
     }
 }
