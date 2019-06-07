@@ -38,8 +38,6 @@ const UIController = (() => {
 // APP CONTROLLER
 const appController = ((walletCtrl, UICtrl) => {
 
-    const DOM = UICtrl.getDOMelements();
-
     const addItem = () => {
         // 1. Get the inputs data
         const input = UICtrl.getInput();
@@ -52,19 +50,32 @@ const appController = ((walletCtrl, UICtrl) => {
 
         // 5. Display the state of wallet on the user interface
 
-    }
+    };
 
-    // Add event listener on form submit
-    document.querySelector(DOM.form).addEventListener('submit', e => {
-        e.preventDefault();
-        addItem();
-    });
+    const setupEventListeners = () => {
+        const DOM = UICtrl.getDOMelements();
 
-    // Add event listener on press enter
-    document.addEventListener('keypress', e => {
-        if (e.keyCode === 13 || e.which === 13) {
+        // Add event listener on form submit
+        document.querySelector(DOM.form).addEventListener('submit', e => {
+            e.preventDefault();
             addItem();
+        });
+
+        // Add event listener on press enter
+        document.addEventListener('keypress', e => {
+            if (e.keyCode === 13 || e.which === 13) {
+                addItem();
+            }
+        });
+    };
+
+    return {
+        init: () => {
+            console.log('Application has started!');
+            setupEventListeners();
         }
-    });
+    };
 
 })(walletController, UIController);
+
+appController.init();
