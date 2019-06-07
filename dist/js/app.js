@@ -1,6 +1,33 @@
 // WALLET CONTROLLER
 const walletController = (() => {
 
+    class Income {
+        constructor(id, description, value) {
+            this.id = id;
+            this.description = description;
+            this.value = value;
+        }
+    };
+
+    class Expense {
+        constructor(id, description, value) {
+            this.id = id;
+            this.description = description;
+            this.value = value;
+        }
+    };
+
+    const data = {
+        allItems: {
+            exp: [],
+            inc: []
+        },
+        totals: {
+            exp: 0,
+            inc: 0
+        }
+    };
+
 })();
 //---------------------------------------------------------------------------------------------------------//
 
