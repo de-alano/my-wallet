@@ -12,7 +12,6 @@ body {
   font-family: "Work Sans", sans-serif;
   font-weight: 400;
   line-height: 1.5;
-  background-image: linear-gradient(to right, #061E42, #1C60A9);
   min-height: 100vh;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -22,122 +21,253 @@ body {
   user-select: none; }
 
 .wallet {
-  padding: 4rem 0;
-  background-image: url("../images/bg.jpg");
+  padding: 3rem 0;
+  background-image: url("../images/bg-small.jpg");
   background-size: cover;
   background-position: center;
   color: #ffffff; }
+  @media only screen and (min-width: 56.25em) {
+    .wallet {
+      background-image: linear-gradient(rgba(6, 30, 66, 0.85), rgba(6, 30, 66, 0.85)), url("../images/bg-large.jpg");
+      background-position: bottom; } }
   .wallet__title {
     text-transform: uppercase;
     font-size: 1.2rem;
     font-weight: 200;
     letter-spacing: 1px;
     text-align: center; }
+    @media only screen and (min-width: 37.5em) {
+      .wallet__title {
+        font-size: 1.4rem; } }
+    @media only screen and (min-width: 56.25em) {
+      .wallet__title {
+        font-size: 1.6rem; } }
   .wallet__value {
     text-align: center;
     font-size: 4rem;
     margin-top: -0.6rem;
     letter-spacing: 2px; }
+    @media only screen and (min-width: 37.5em) {
+      .wallet__value {
+        font-size: 4.5rem; } }
+    @media only screen and (min-width: 56.25em) {
+      .wallet__value {
+        font-size: 5rem; } }
   .wallet__details {
     margin-top: 2rem;
     display: flex;
-    justify-content: space-between;
-    font-size: 1.2rem; }
+    justify-content: space-between; }
+    @media only screen and (min-width: 56.25em) {
+      .wallet__details {
+        justify-content: space-evenly; } }
+    @media only screen and (min-width: 75em) {
+      .wallet__details {
+        justify-content: center; } }
   .wallet__incomes, .wallet__expenses {
     width: 45%;
     text-align: center;
     padding: .5rem 0;
     background-color: rgba(255, 255, 255, 0.15); }
+    @media only screen and (min-width: 37.5em) {
+      .wallet__incomes, .wallet__expenses {
+        width: 40%; } }
+    @media only screen and (min-width: 56.25em) {
+      .wallet__incomes, .wallet__expenses {
+        padding: 1rem 0;
+        width: 30%; } }
+    @media only screen and (min-width: 75em) {
+      .wallet__incomes, .wallet__expenses {
+        width: 25%;
+        max-width: 35rem; } }
   .wallet__incomes {
     border-top-right-radius: 2rem;
     border-bottom-right-radius: 2rem; }
+    @media only screen and (min-width: 37.5em) {
+      .wallet__incomes {
+        border-top-right-radius: 2.5rem;
+        border-bottom-right-radius: 2.5rem; } }
+    @media only screen and (min-width: 56.25em) {
+      .wallet__incomes {
+        border-radius: 0; } }
+    @media only screen and (min-width: 75em) {
+      .wallet__incomes {
+        margin-right: 5rem; } }
   .wallet__expenses {
     border-top-left-radius: 2rem;
     border-bottom-left-radius: 2rem; }
+    @media only screen and (min-width: 37.5em) {
+      .wallet__expenses {
+        border-top-left-radius: 2.5rem;
+        border-bottom-left-radius: 2.5rem; } }
+    @media only screen and (min-width: 56.25em) {
+      .wallet__expenses {
+        border-radius: 0; } }
   .wallet__incomes--title, .wallet__expenses--title {
-    font-size: 1rem;
+    font-size: 1.2rem;
     letter-spacing: 1px;
     text-transform: uppercase; }
+    @media only screen and (min-width: 37.5em) {
+      .wallet__incomes--title, .wallet__expenses--title {
+        font-size: 1.4rem; } }
+    @media only screen and (min-width: 56.25em) {
+      .wallet__incomes--title, .wallet__expenses--title {
+        font-size: 1.6rem; } }
   .wallet__incomes--value, .wallet__expenses--value {
     font-size: 2rem;
     letter-spacing: 1px;
     font-weight: 600; }
+    @media only screen and (min-width: 37.5em) {
+      .wallet__incomes--value, .wallet__expenses--value {
+        font-size: 2.3rem; } }
+    @media only screen and (min-width: 56.25em) {
+      .wallet__incomes--value, .wallet__expenses--value {
+        font-size: 2.5rem; } }
   .wallet__incomes--value {
     color: #00cec9; }
   .wallet__expenses--value {
     color: #ff7675; }
 
-.transactions__form {
-  box-sizing: border-box;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #dfe6e9;
-  padding: 1rem;
-  box-shadow: 0 0.5rem 2rem rgba(255, 255, 255, 0.2), 0 -0.5rem 2rem rgba(255, 255, 255, 0.2); }
+.transactions {
+  background-color: #ffffff; }
+  .transactions__form {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #dfe6e9;
+    padding: 1rem;
+    box-shadow: 0 0.5rem 2rem rgba(255, 255, 255, 0.2), 0 -0.5rem 2rem rgba(255, 255, 255, 0.2);
+    border-top: 3px solid #1C60A9;
+    border-bottom: 3px solid #1C60A9; }
+    @media only screen and (min-width: 56.25em) {
+      .transactions__form {
+        padding: 1.5rem 2rem; } }
+    @media only screen and (min-width: 75em) {
+      .transactions__form {
+        justify-content: center; } }
+  .transactions__description, .transactions__value, .transactions__type {
+    display: block;
+    border: 1px solid #7f8c8d;
+    font-family: "Work Sans", sans-serif;
+    font-size: 1.4rem;
+    padding: 0.8rem 1rem;
+    color: #061E42;
+    transition: border .2s ease-out; }
+    @media only screen and (min-width: 37.5em) {
+      .transactions__description, .transactions__value, .transactions__type {
+        font-size: 1.6rem;
+        padding: 1rem 1.2rem; } }
+    @media only screen and (min-width: 56.25em) {
+      .transactions__description, .transactions__value, .transactions__type {
+        font-size: 1.8rem;
+        padding: 1.2rem 1.5rem; } }
+    @media only screen and (min-width: 75em) {
+      .transactions__description, .transactions__value, .transactions__type {
+        margin-right: 2rem; } }
+    .transactions__description:focus, .transactions__value:focus, .transactions__type:focus {
+      outline: none;
+      border: 1px solid #00cec9; }
+  .transactions__type {
+    width: 4rem;
+    padding: 0.5rem 0 0.5rem 0.5rem;
+    text-align: center; }
+    @media only screen and (min-width: 56.25em) {
+      .transactions__type {
+        width: 5rem;
+        padding: 1.2rem 0 1.2rem 0.8rem; } }
+  .transactions__description {
+    width: 45%;
+    max-width: 50rem; }
+  .transactions__value {
+    width: 17%;
+    text-align: center;
+    max-width: 20rem; }
+  .transactions__btn {
+    border: none;
+    background-color: #dfe6e9;
+    cursor: pointer;
+    display: block;
+    line-height: 1;
+    width: 3rem;
+    height: 3rem; }
+    @media only screen and (min-width: 37.5em) {
+      .transactions__btn {
+        width: 3.5rem;
+        height: 3.5rem; } }
+    @media only screen and (min-width: 56.25em) {
+      .transactions__btn {
+        width: 4rem;
+        height: 4rem; } }
+  .transactions__btn__icon {
+    width: 100%;
+    height: 100%; }
 
-.transactions__description, .transactions__value, .transactions__type {
-  display: block;
-  border: 1px solid #7f8c8d;
-  font-family: "Work Sans", sans-serif;
-  font-size: 1.4rem;
-  padding: 0.8rem 1rem;
-  color: #061E42;
-  transition: border .2s ease-out; }
-  .transactions__description:focus, .transactions__value:focus, .transactions__type:focus {
-    outline: none;
-    border: 1px solid #00cec9; }
+.container {
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 3rem 0; }
+  @media only screen and (min-width: 56.25em) {
+    .container {
+      padding: 3rem; } }
 
-.transactions__type {
-  width: 4rem;
-  padding: 0.5rem 0 0.5rem 0.5rem;
-  text-align: center; }
-
-.transactions__description {
-  width: 45%; }
-
-.transactions__value {
-  width: 17%;
-  text-align: center; }
-
-.transactions__btn {
-  border: none;
-  background-color: #dfe6e9;
-  cursor: pointer; }
-
-.transactions__btn__icon {
-  width: 2.5rem; }
-
-.transactions__title {
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #dfe6e9;
-  font-weight: 200;
-  text-align: center;
-  padding: 1rem 0; }
+.transactions__list {
+  margin: 0 auto;
+  padding-bottom: 2rem; }
 
 .item {
-  background-color: #ffffff;
   box-sizing: border-box;
   width: 90%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem; }
+  padding: 1rem 2rem;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  background: linear-gradient(#ffffff, #ffffff) padding-box, linear-gradient(to right, #1C60A9, #061E42) border-box; }
+  @media only screen and (min-width: 37.5em) {
+    .item {
+      width: 80%;
+      padding: 1.5rem 2rem; } }
+  @media only screen and (min-width: 56.25em) {
+    .item {
+      border: 5px solid transparent; } }
   .item:not(:last-child) {
     margin-bottom: 1rem; }
   .item__income {
     border-top-right-radius: 2rem;
-    border-bottom-right-radius: 2rem; }
+    border-bottom-right-radius: 2rem;
+    box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    border-right: 5px solid transparent; }
+    @media only screen and (min-width: 37.5em) {
+      .item__income {
+        border-top-right-radius: 2.5rem;
+        border-bottom-right-radius: 2.5rem; } }
+    @media only screen and (min-width: 56.25em) {
+      .item__income {
+        border-radius: 2.5rem;
+        border: 5px solid transparent; } }
   .item__expense {
     margin-left: 10%;
     border-top-left-radius: 2rem;
-    border-bottom-left-radius: 2rem; }
+    border-bottom-left-radius: 2rem;
+    box-shadow: -0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    border-left: 5px solid transparent;
+    background: linear-gradient(#dfe6e9, #dfe6e9) padding-box, linear-gradient(to right, #1C60A9, #061E42) border-box; }
+    @media only screen and (min-width: 37.5em) {
+      .item__expense {
+        margin-left: 20%;
+        border-top-left-radius: 2.5rem;
+        border-bottom-left-radius: 2.5rem; } }
+    @media only screen and (min-width: 56.25em) {
+      .item__expense {
+        border-radius: 2.5rem; } }
   .item__icon {
     height: 1.5rem;
     transform: rotate(45deg); }
+    @media only screen and (min-width: 37.5em) {
+      .item__icon {
+        height: 2rem; } }
   .item__info {
     text-align: center;
     width: 50%;
@@ -146,13 +276,31 @@ body {
     font-size: 1.3rem;
     color: #061E42;
     font-weight: 600; }
+    @media only screen and (min-width: 37.5em) {
+      .item__description {
+        font-size: 1.5rem; } }
+    @media only screen and (min-width: 56.25em) {
+      .item__description {
+        border-radius: 1.7rem; } }
   .item__date {
     color: #1C60A9;
     font-size: 1rem;
     margin-top: -0.3rem; }
+    @media only screen and (min-width: 37.5em) {
+      .item__date {
+        font-size: 1.2rem; } }
+    @media only screen and (min-width: 56.25em) {
+      .item__date {
+        border-radius: 1.4rem; } }
   .item__value {
     font-size: 1.5rem;
     transition: transform 0.2s ease-out; }
+    @media only screen and (min-width: 37.5em) {
+      .item__value {
+        font-size: 1.8rem; } }
+    @media only screen and (min-width: 56.25em) {
+      .item__value {
+        border-radius: 2rem; } }
     .item__value--inc {
       color: #00cec9; }
     .item__value--exp {
@@ -162,10 +310,10 @@ body {
     background-image: url(../images/trash.svg);
     background-position: center;
     background-size: cover;
-    width: 1.5rem;
+    width: 1.8rem;
     height: 2rem;
     border: none;
-    background-color: #ffffff;
+    background-color: transparent;
     outline: none;
     cursor: pointer; }
   .item:active .item__delete--btn {
@@ -174,3 +322,10 @@ body {
     transform: translateX(-2rem); }
   .item:active .item__value {
     transform: translateX(-2rem); }
+  @media only screen and (min-width: 75em) {
+    .item:hover .item__delete--btn {
+      display: block; }
+    .item:hover .item__info {
+      transform: translateX(-2rem); }
+    .item:hover .item__value {
+      transform: translateX(-2rem); } }

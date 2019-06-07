@@ -1,10 +1,15 @@
 .wallet {
-    padding: 4rem 0;
-    background-image: url('../images/bg.jpg');
+    padding: 3rem 0;
+    background-image: url('../images/bg-small.jpg');
     background-size: cover;
     background-position: center;
     color: $color-white;
-    // background-position: center;
+
+    @media only screen and (min-width: $bp-900) {
+        background-image: linear-gradient(rgba($color-dark-blue, .85), rgba($color-dark-blue, .85)) ,url('../images/bg-large.jpg');
+        background-position: bottom;
+    }
+
 
     &__info {
         // margin-top: 3rem;
@@ -16,6 +21,14 @@
         font-weight: 200;
         letter-spacing: 1px;
         text-align: center;
+
+        @media only screen and (min-width: $bp-600) {
+            font-size: 1.4rem;
+        }
+
+        @media only screen and (min-width: $bp-900) {
+            font-size: 1.6rem;
+        }
     }
 
     &__value {
@@ -23,13 +36,28 @@
         font-size: 4rem;
         margin-top: -0.6rem;
         letter-spacing: 2px;
+
+        @media only screen and (min-width: $bp-600) {
+            font-size: 4.5rem;
+        }
+
+        @media only screen and (min-width: $bp-900) {
+            font-size: 5rem;
+        }
     }
 
     &__details {
         margin-top: 2rem;
         display: flex;
         justify-content: space-between;
-        font-size: 1.2rem;
+        
+        @media only screen and (min-width: $bp-900) {
+            justify-content: space-evenly;
+        }
+
+        @media only screen and (min-width: $bp-1200) {
+            justify-content: center;
+        }
     }
 
     &__incomes, &__expenses {
@@ -37,28 +65,80 @@
         text-align: center;
         padding: .5rem 0;
         background-color: rgba($color-white, .15);
+
+        @media only screen and (min-width: $bp-600) {
+            width: 40%;
+        }
+
+        @media only screen and (min-width: $bp-900) {
+            padding: 1rem 0;
+            width: 30%;
+        }
+
+        @media only screen and (min-width: $bp-1200) {
+            width: 25%;
+            max-width: 35rem;
+        }
     }
 
     &__incomes {
         border-top-right-radius: 2rem;
         border-bottom-right-radius: 2rem;
+
+        @media only screen and (min-width: $bp-600) {
+            border-top-right-radius: 2.5rem;
+            border-bottom-right-radius: 2.5rem;
+        }
+
+        @media only screen and (min-width: $bp-900) {
+            border-radius: 0;
+        }
+
+        @media only screen and (min-width: $bp-1200) {
+            margin-right: 5rem;
+        }
     }
 
     &__expenses {
         border-top-left-radius: 2rem;
         border-bottom-left-radius: 2rem;
+
+        @media only screen and (min-width: $bp-600) {
+            border-top-left-radius: 2.5rem;
+            border-bottom-left-radius: 2.5rem;
+        }
+
+        @media only screen and (min-width: $bp-900) {
+            border-radius: 0;
+        }
     }
 
     &__incomes--title, &__expenses--title {
-        font-size: 1rem;
+        font-size: 1.2rem;
         letter-spacing: 1px;
         text-transform: uppercase;
+
+        @media only screen and (min-width: $bp-600) {
+            font-size: 1.4rem;
+        }
+
+        @media only screen and (min-width: $bp-900) {
+            font-size: 1.6rem;
+        }
     }
 
     &__incomes--value, &__expenses--value {
         font-size: 2rem;
         letter-spacing: 1px;
         font-weight: 600;
+
+        @media only screen and (min-width: $bp-600) {
+            font-size: 2.3rem;
+        }
+
+        @media only screen and (min-width: $bp-900) {
+            font-size: 2.5rem;
+        }
     }
 
     &__incomes--value {
@@ -71,6 +151,8 @@
 }
 
 .transactions {
+    background-color: $color-white;
+    
 
     &__form {
         box-sizing: border-box;
@@ -81,6 +163,18 @@
         background-color: $color-light-gray;
         padding: 1rem;
         box-shadow: 0 .5rem 2rem rgba($color-white, 0.2), 0 -.5rem 2rem rgba($color-white, 0.2);
+        border-top: 3px solid $color-light-blue;
+        border-bottom: 3px solid $color-light-blue;
+
+        @media only screen and (min-width: $bp-900) {
+            padding: 1.5rem 2rem;
+
+        }
+
+        @media only screen and (min-width: $bp-1200) {
+            justify-content: center;
+            
+        }
     }
 
     &__description, &__value, &__type {
@@ -92,6 +186,20 @@
         color: $color-dark-blue;
         transition: border .2s ease-out;
 
+        @media only screen and (min-width: $bp-600) {
+            font-size: 1.6rem;
+            padding: 1rem 1.2rem;
+        }
+
+        @media only screen and (min-width: $bp-900) {
+            font-size: 1.8rem;
+            padding: 1.2rem 1.5rem;
+        }
+
+        @media only screen and (min-width: $bp-1200) {
+            margin-right: 2rem;
+        }
+
         &:focus {
             outline: none;
             border: 1px solid $color-inc;
@@ -102,50 +210,106 @@
         width: 4rem;
         padding: 0.5rem 0 0.5rem 0.5rem;
         text-align: center;
+
+        @media only screen and (min-width: $bp-900) {
+            width: 5rem;
+            padding: 1.2rem 0 1.2rem 0.8rem;
+        }
     }
 
     &__description {
         width: 45%;
+        max-width: 50rem;
     }
 
     &__value {
         width: 17%;
         text-align: center;
+        max-width: 20rem;
     }
 
     &__btn {
         border: none;
         background-color: $color-light-gray;
         cursor: pointer;
+        display: block;
+        line-height: 1;
+        width: 3rem;
+        height: 3rem;
+
+        @media only screen and (min-width: $bp-600) {
+            width: 3.5rem;
+            height: 3.5rem;
+        }
+
+        @media only screen and (min-width: $bp-900) {
+            width: 4rem;
+            height: 4rem;
+        }
     }
 
     &__btn__icon {
-        width: 2.5rem;
+        width: 100%;
+        height: 100%;
     }
 
-    &__title {
-        font-size: 1.2rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        color: $color-light-gray;
-        font-weight: 200;
-        text-align: center;
-        padding: 1rem 0;
+    // &__title {
+    //     font-size: 1.2rem;
+    //     text-transform: uppercase;
+    //     letter-spacing: 1px;
+    //     font-weight: 200;
+    //     text-align: center;
+    //     padding: 1rem 0;
+    //     color: $color-light-blue;
+
+    //     @media only screen and (min-width: $bp-600) {
+    //         font-size: 1.4rem;
+    //         padding: 1.5rem 0;
+    //     }
+
+    //     @media only screen and (min-width: $bp-900) {
+    //         font-size: 1.6rem;
+    //         padding: 2rem 0;
+    //     }
+    // }
+}
+
+.container {
+    max-width: 120rem;
+    margin: 0 auto;
+    padding: 3rem 0;
+
+    @media only screen and (min-width: $bp-900) {
+        padding: 3rem;
     }
 }
 
 .transactions__list {
-
+    margin: 0 auto;
+    padding-bottom: 2rem;
 }
 
 .item {
-    background-color: $color-white;
     box-sizing: border-box;
     width: 90%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
+
+    border-top: $gradient-border;
+    border-bottom: $gradient-border;
+    background: linear-gradient($color-white, $color-white) padding-box, linear-gradient(to right, $color-light-blue, $color-dark-blue) border-box;
+
+
+    @media only screen and (min-width: $bp-600) {
+        width: 80%;
+        padding: 1.5rem 2rem;
+    }
+
+    @media only screen and (min-width: $bp-900) {
+        border: $gradient-border;
+    }
 
     &:not(:last-child) {
         margin-bottom: 1rem;
@@ -154,17 +318,49 @@
     &__income {
         border-top-right-radius: 2rem;
         border-bottom-right-radius: 2rem;
+        box-shadow: .5rem .5rem 1rem rgba($color-black, 0.2);
+        border-right: $gradient-border;
+
+        @media only screen and (min-width: $bp-600) {
+            border-top-right-radius: 2.5rem;
+            border-bottom-right-radius: 2.5rem;
+        }
+
+        @media only screen and (min-width: $bp-900) {
+            border-radius: 2.5rem;
+            border: $gradient-border;
+        }
+
     }
 
     &__expense {
         margin-left: 10%;
         border-top-left-radius: 2rem;
         border-bottom-left-radius: 2rem;
+        box-shadow: -.5rem .5rem 1rem rgba($color-black, 0.2);
+        border-left: 5px solid transparent;
+
+        background: linear-gradient($color-light-gray, $color-light-gray) padding-box, linear-gradient(to right, $color-light-blue, $color-dark-blue) border-box;
+        
+
+        @media only screen and (min-width: $bp-600) {
+            margin-left: 20%;
+            border-top-left-radius: 2.5rem;
+            border-bottom-left-radius: 2.5rem;
+        }
+
+        @media only screen and (min-width: $bp-900) {
+            border-radius: 2.5rem;
+        }
     }
 
     &__icon {
         height: 1.5rem;
         transform: rotate(45deg);
+
+        @media only screen and (min-width: $bp-600) {
+            height: 2rem;
+        }
 
         &--inc {
         }
@@ -186,6 +382,14 @@
         color: $color-dark-blue;
         font-weight: 600;
 
+        @media only screen and (min-width: $bp-600) {
+            font-size: 1.5rem;
+        }
+
+        @media only screen and (min-width: $bp-900) {
+            border-radius: 1.7rem;
+        }
+
         &--inc {
 
         }
@@ -199,11 +403,27 @@
         color: $color-light-blue;
         font-size: 1rem;
         margin-top: -0.3rem;
+
+        @media only screen and (min-width: $bp-600) {
+            font-size: 1.2rem;
+        }
+
+        @media only screen and (min-width: $bp-900) {
+            border-radius: 1.4rem;
+        }
     }
 
     &__value {
         font-size: 1.5rem;
         @include transition(transform);
+
+        @media only screen and (min-width: $bp-600) {
+            font-size: 1.8rem;
+        }
+
+        @media only screen and (min-width: $bp-900) {
+            border-radius: 2rem;
+        }
 
         &--inc {
             color: $color-inc;
@@ -223,10 +443,10 @@
         background-image: url(../images/trash.svg);
         background-position: center;
         background-size: cover;
-        width: 1.5rem;
+        width: 1.8rem;
         height: 2rem;
         border: none;
-        background-color: $color-white;
+        background-color: transparent;
         outline: none;
         cursor: pointer;
     }
@@ -241,5 +461,19 @@
 
     &:active &__value {
         transform: translateX(-2rem);
+    }
+
+    @media only screen and (min-width: $bp-1200) {
+        &:hover &__delete--btn {
+            display: block;
+        }
+
+        &:hover &__info {
+            transform: translateX(-2rem);
+        }
+    
+        &:hover &__value {
+            transform: translateX(-2rem);
+        }
     }
 }

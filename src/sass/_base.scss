@@ -1,11 +1,14 @@
 // COLORS
 $color-white: #ffffff;
+$color-black: #000000;
 $color-inc: #00cec9;
 $color-exp: #ff7675;
 $color-light-gray: #dfe6e9;
 $color-dark-gray: #7f8c8d;
 $color-light-blue: #1C60A9;
 $color-dark-blue: #061E42;
+
+$gradient-border: 5px solid transparent;
 
 
 // FONTS
@@ -15,6 +18,13 @@ $font: 'Work Sans', sans-serif;
 @mixin transition($element) {
     transition: $element .2s ease-out;
 }
+
+
+// BREAKPOINTS
+$bp-600: 37.5em; // 600px
+$bp-700: 43.75em; // 700px
+$bp-900: 56.25em; // 900px
+$bp-1200: 75em; // 1200px
 
 *,
 *::before,
@@ -32,7 +42,6 @@ body {
     font-family: $font;
     font-weight: 400;
     line-height: 1.5;
-    background-image: linear-gradient(to right, $color-dark-blue, $color-light-blue);
     min-height: 100vh;
     -webkit-touch-callout: none; 
     -webkit-user-select: none; 
