@@ -71,6 +71,7 @@ const UIController = (() => {
         itemDescription: '.transactions__description',
         itemValue: '.transactions__value',
         form: '.transactions__form',
+        itemsContainer: '.transactions__list'
     };
 
     return {
@@ -82,6 +83,23 @@ const UIController = (() => {
                 description: document.querySelector(DOMelements.itemDescription).value,
                 value: document.querySelector(DOMelements.itemValue).value
             };
+        },
+
+        addTransactionItem: (obj, type) => {
+            let html, newHtml;
+
+            // 1. Create HTML string with placeholder text
+            if (type === 'inc') {
+                html = '<div class="item item__income" id="income-%id%"><img src="dist/images/arrow-inc.svg" alt="Income Icon" class="item__icon item__icon--inc"><div class="item__info"><div class="item__description item__description--inc">%description%</div><div class="item__date">June 3, 2019</div></div><div class="item__value item__value--inc">%value%</div><div class="item__delete"><button class="item__delete--btn"></button></div></div>'
+            } else if (type === 'exp') {
+                html = '<div class="item item__expense" id="expense-%id%"><img src="dist/images/arrow-exp.svg" alt="Expense Icon" class="item__icon item__icon--exp"><div class="item__info"><div class="item__description item__description--exp">%description%</div><div class="item__date">June 3, 2019</div></div><div class="item__value item__value--exp">%value%</div><div class="item__delete"><button class="item__delete--btn"></button></div></div>';
+            }
+            // 2. Replace the placeholder text with actual data
+            newHtml = html.replace('%id%', obj.id);
+            newHtml = newHtml.replace('%description%', obj.description);
+            newHtml = newHtml.replace('%value%', obj.value);
+            // 3. Insert the HTML into the DOM
+            document.querySelector(DOMelements.itemsContainer).insertAdjacentHTML('beforeend', newHtml);
         },
 
         getDOMelements: () => {
@@ -103,7 +121,7 @@ const appController = ((walletCtrl, UICtrl) => {
         // 2. Add the item to the wallet controller
         const newItem = walletCtrl.addItem(input.type, input.description, input.value);
         // 3. Add the item to the user interface controller
-
+        UICtrl.addTransactionItem(newItem, input.type);
         // 4. Calculate the state of wallet
 
         // 5. Display the state of wallet on the user interface
@@ -120,8 +138,9 @@ const appController = ((walletCtrl, UICtrl) => {
         });
 
         // Add event listener on press enter
-        document.addEventListener('keypress', e => {
+        document.querySelector(DOM.itemDescription).addEventListener('keypress', e => {
             if (e.keyCode === 13 || e.which === 13) {
+                e.preventDefault();
                 ctrlAddItem();
             }
         });
