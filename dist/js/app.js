@@ -81,7 +81,7 @@ const UIController = (() => {
             return {
                 type: document.querySelector(DOMelements.itemType).value, // inc or exp
                 description: document.querySelector(DOMelements.itemDescription).value,
-                value: document.querySelector(DOMelements.itemValue).value
+                value: parseFloat(document.querySelector(DOMelements.itemValue).value)
             };
         },
 
@@ -125,20 +125,26 @@ const UIController = (() => {
 // APP CONTROLLER
 const appController = ((walletCtrl, UICtrl) => {
 
+    const updateWallet = () => {
+        // 1. Calculate the state of wallet
+
+        // 2. Return the state of wallet
+
+        // 3. Display the state of wallet on the user interface
+    };
+
     const ctrlAddItem = () => {
         // 1. Get the inputs data
         const input = UICtrl.getInput();
-        console.log(input);
-        // 2. Add the item to the wallet controller
-        const newItem = walletCtrl.addItem(input.type, input.description, input.value);
-        // 3. Add the item to the user interface controller
-        UICtrl.addTransactionItem(newItem, input.type);
-        // 4. Clear the input fields and set focus to the description field
-        UICtrl.clearFields();
-        // 5. Calculate the state of wallet
 
-        // 6. Display the state of wallet on the user interface
-
+        if (input.description !== "" && !isNaN(input.value) && input.value > 0) {
+            // 2. Add the item to the wallet controller
+            const newItem = walletCtrl.addItem(input.type, input.description, input.value);
+            // 3. Add the item to the user interface controller
+            UICtrl.addTransactionItem(newItem, input.type);
+            // 4. Clear the input fields and set focus to the description field
+            UICtrl.clearFields();
+        }
     };
 
     const setupEventListeners = () => {
