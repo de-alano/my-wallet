@@ -102,6 +102,17 @@ const UIController = (() => {
             document.querySelector(DOMelements.itemsContainer).insertAdjacentHTML('beforeend', newHtml);
         },
 
+        clearFields: () => {
+            // Get input fields
+            const fields = document.querySelectorAll(`${DOMelements.itemDescription}, ${DOMelements.itemValue}`);
+            // Convert node list to array
+            const fieldsArr = [...fields];
+            // Clear input fields
+            fieldsArr.forEach(field => field.value = '');
+            // Set focus to the description field
+            fieldsArr[0].focus();
+        },
+
         getDOMelements: () => {
 
             return DOMelements;
@@ -122,9 +133,11 @@ const appController = ((walletCtrl, UICtrl) => {
         const newItem = walletCtrl.addItem(input.type, input.description, input.value);
         // 3. Add the item to the user interface controller
         UICtrl.addTransactionItem(newItem, input.type);
-        // 4. Calculate the state of wallet
+        // 4. Clear the input fields and set focus to the description field
+        UICtrl.clearFields();
+        // 5. Calculate the state of wallet
 
-        // 5. Display the state of wallet on the user interface
+        // 6. Display the state of wallet on the user interface
 
     };
 
