@@ -25,7 +25,15 @@ const walletController = (() => {
         totals: {
             exp: 0,
             inc: 0
-        }
+        },
+        wallet: 0
+    };
+
+    const calculateTotal = type => {
+        let sum = 0;
+        data.allItems[type].forEach(item => sum += item.value);
+
+        data.totals[type] = sum;
     };
 
     return {
@@ -52,6 +60,22 @@ const walletController = (() => {
 
             // Return the new item
             return newItem;
+        },
+
+        calculateWallet: () => {
+            // 1. Calculate total incomes and expenses
+            calculateTotal('exp');
+            calculateTotal('inc');
+            // 2. Calculate the wallet: income - expenses
+            data.wallet = data.totals.inc - data.totals.exp;
+        },
+
+        getWallet: () => {
+            return {
+                wallet: data.wallet,
+                totalInc: data.totals.inc,
+                totalExp: data.totals.exp
+            };
         },
 
         test: () => {
@@ -127,10 +151,11 @@ const appController = ((walletCtrl, UICtrl) => {
 
     const updateWallet = () => {
         // 1. Calculate the state of wallet
-
+        walletCtrl.calculateWallet();
         // 2. Return the state of wallet
-
+        const wallet = walletCtrl.getWallet();
         // 3. Display the state of wallet on the user interface
+        console.log(wallet);
     };
 
     const ctrlAddItem = () => {
@@ -144,6 +169,8 @@ const appController = ((walletCtrl, UICtrl) => {
             UICtrl.addTransactionItem(newItem, input.type);
             // 4. Clear the input fields and set focus to the description field
             UICtrl.clearFields();
+            // 5. Calculate and update the wallet
+            updateWallet();
         }
     };
 
