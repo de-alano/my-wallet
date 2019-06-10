@@ -146,6 +146,11 @@ const UIController = (() => {
             document.querySelector(DOMelements.itemsContainer).insertAdjacentHTML('beforeend', newHtml);
         },
 
+        deleteTransactionItem: selectorID => {
+            const el = document.getElementById(selectorID);
+            el.parentNode.removeChild(el);
+        },
+
         clearFields: () => {
             // Get input fields
             const fields = document.querySelectorAll(`${DOMelements.itemDescription}, ${DOMelements.itemValue}`);
@@ -215,7 +220,9 @@ const appController = ((walletCtrl, UICtrl) => {
 
             // 1. Delete the item from the data structure
             walletCtrl.deleteItem(type, ID);
-            // 2. Calculate and update the wallet
+            // 2. Delete the item from the user interface
+            UICtrl.deleteTransactionItem(itemID);
+            // 3. Calculate and update the wallet
             updateWallet();
         }
 
@@ -244,6 +251,11 @@ const appController = ((walletCtrl, UICtrl) => {
     return {
         init: () => {
             console.log('Application has started!');
+            UICtrl.displayWallet({
+                wallet: 0,
+                totalInc: 0,
+                totalExp: 0
+            });
             setupEventListeners();
         }
     };
