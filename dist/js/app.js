@@ -115,6 +115,7 @@ const UIController = (() => {
         walletLabel: '.wallet__value',
         incomesLabel: '.wallet__incomes--value',
         expensesLabel: '.wallet__expenses--value',
+        dateLabel: '.item__date',
         deleteBtn: '.item__delete--btn'
     };
 
@@ -144,6 +145,15 @@ const UIController = (() => {
         return (type === 'exp' ? '-' : '+') + ' ' + int + '.' + dec;
     };
 
+    const displayDate = () => {
+        const now = new Date();
+        const date = ("0" + now.getDate()).slice(-2) + "-" + ("0" + (now.getMonth() + 1)).slice(-2) + "-" +
+            now.getFullYear() + " | " + ("0" + now.getHours()).slice(-2) + ":" + ("0" + now.getMinutes()).slice(-2);
+
+        return date;
+
+    };
+
     return {
         getInput: () => {
 
@@ -160,14 +170,15 @@ const UIController = (() => {
 
             // 1. Create HTML string with placeholder text
             if (type === 'inc') {
-                html = '<div class="item item__income" id="inc-%id%"><img src="dist/images/arrow-inc.svg" alt="Income Icon" class="item__icon item__icon--inc"><div class="item__info"><div class="item__description item__description--inc">%description%</div><div class="item__date">June 3, 2019</div></div><div class="item__value item__value--inc">%value%</div><div class="item__delete"><button class="item__delete--btn"></button></div></div>'
+                html = '<div class="item item__income" id="inc-%id%"><img src="dist/images/arrow-inc.svg" alt="Income Icon" class="item__icon item__icon--inc"><div class="item__info"><div class="item__description item__description--inc">%description%</div><div class="item__date">%date%</div></div><div class="item__value item__value--inc">%value%</div><div class="item__delete"><button class="item__delete--btn"></button></div></div>'
             } else if (type === 'exp') {
-                html = '<div class="item item__expense" id="exp-%id%"><img src="dist/images/arrow-exp.svg" alt="Expense Icon" class="item__icon item__icon--exp"><div class="item__info"><div class="item__description item__description--exp">%description%</div><div class="item__date">June 3, 2019</div></div><div class="item__value item__value--exp">%value%</div><div class="item__delete"><button class="item__delete--btn"></button></div></div>';
+                html = '<div class="item item__expense" id="exp-%id%"><img src="dist/images/arrow-exp.svg" alt="Expense Icon" class="item__icon item__icon--exp"><div class="item__info"><div class="item__description item__description--exp">%description%</div><div class="item__date">%date%</div></div><div class="item__value item__value--exp">%value%</div><div class="item__delete"><button class="item__delete--btn"></button></div></div>';
             }
             // 2. Replace the placeholder text with actual data
             newHtml = html.replace('%id%', obj.id);
             newHtml = newHtml.replace('%description%', obj.description);
             newHtml = newHtml.replace('%value%', formatNumber(obj.value, type));
+            newHtml = newHtml.replace('%date%', displayDate());
             // 3. Insert the HTML into the DOM
             document.querySelector(DOMelements.itemsContainer).insertAdjacentHTML('beforeend', newHtml);
         },
