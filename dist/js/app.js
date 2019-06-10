@@ -118,6 +118,32 @@ const UIController = (() => {
         deleteBtn: '.item__delete--btn'
     };
 
+    const formatNumber = (num, type) => {
+        let numSplit, int, dec;
+        /*
+        +/- before number
+        exactly 2 decimal points
+        comma separating the thousands
+
+        2310.4567 -> + 2,310.46
+        2000 -> + 2,000.00
+        */
+
+        num = Math.abs(num);
+        num = num.toFixed(2);
+        numSplit = num.split('.');
+        int = numSplit[0];
+        if (int.length > 3) {
+            int = int.substr(0, int.length - 3) + ',' + int.substr(int.length - 3, int.length); // input 2310, output 2,310
+        }
+
+        dec = numSplit[1];
+
+        // type === 'exp' ? sign = '-' : sign = '+';
+
+        return (type === 'exp' ? '-' : '+') + ' ' + int + '.' + dec;
+    };
+
     return {
         getInput: () => {
 
@@ -141,7 +167,7 @@ const UIController = (() => {
             // 2. Replace the placeholder text with actual data
             newHtml = html.replace('%id%', obj.id);
             newHtml = newHtml.replace('%description%', obj.description);
-            newHtml = newHtml.replace('%value%', obj.value);
+            newHtml = newHtml.replace('%value%', formatNumber(obj.value, type));
             // 3. Insert the HTML into the DOM
             document.querySelector(DOMelements.itemsContainer).insertAdjacentHTML('beforeend', newHtml);
         },
@@ -163,9 +189,12 @@ const UIController = (() => {
         },
 
         displayWallet: obj => {
-            document.querySelector(DOMelements.walletLabel).textContent = obj.wallet;
-            document.querySelector(DOMelements.incomesLabel).textContent = obj.totalInc;
-            document.querySelector(DOMelements.expensesLabel).textContent = obj.totalExp;
+            let type;
+            obj.wallet > 0 ? type = 'inc' : type = 'exp';
+
+            document.querySelector(DOMelements.walletLabel).textContent = formatNumber(obj.wallet, type);
+            document.querySelector(DOMelements.incomesLabel).textContent = formatNumber(obj.totalInc, 'inc');
+            document.querySelector(DOMelements.expensesLabel).textContent = formatNumber(obj.totalExp, 'exp');
         },
 
         getDOMelements: () => {
