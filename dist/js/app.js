@@ -62,6 +62,22 @@ const walletController = (() => {
             return newItem;
         },
 
+        deleteItem: (type, id) => {
+            // id = 4
+            // ids = [1 2 3 4 5]
+            // index = 3
+
+            const ids = data.allItems[type].map(item => {
+                return item.id
+            });
+            const index = ids.indexOf(id);
+            console.log(ids);
+
+            if (index !== -1) {
+                data.allItems[type].splice(index, 1);
+            }
+        },
+
         calculateWallet: () => {
             // 1. Calculate total incomes and expenses
             calculateTotal('exp');
@@ -95,7 +111,11 @@ const UIController = (() => {
         itemDescription: '.transactions__description',
         itemValue: '.transactions__value',
         form: '.transactions__form',
-        itemsContainer: '.transactions__list'
+        itemsContainer: '.transactions__list',
+        walletLabel: '.wallet__value',
+        incomesLabel: '.wallet__incomes--value',
+        expensesLabel: '.wallet__expenses--value',
+        deleteBtn: '.item__delete--btn'
     };
 
     return {
@@ -114,9 +134,9 @@ const UIController = (() => {
 
             // 1. Create HTML string with placeholder text
             if (type === 'inc') {
-                html = '<div class="item item__income" id="income-%id%"><img src="dist/images/arrow-inc.svg" alt="Income Icon" class="item__icon item__icon--inc"><div class="item__info"><div class="item__description item__description--inc">%description%</div><div class="item__date">June 3, 2019</div></div><div class="item__value item__value--inc">%value%</div><div class="item__delete"><button class="item__delete--btn"></button></div></div>'
+                html = '<div class="item item__income" id="inc-%id%"><img src="dist/images/arrow-inc.svg" alt="Income Icon" class="item__icon item__icon--inc"><div class="item__info"><div class="item__description item__description--inc">%description%</div><div class="item__date">June 3, 2019</div></div><div class="item__value item__value--inc">%value%</div><div class="item__delete"><button class="item__delete--btn"></button></div></div>'
             } else if (type === 'exp') {
-                html = '<div class="item item__expense" id="expense-%id%"><img src="dist/images/arrow-exp.svg" alt="Expense Icon" class="item__icon item__icon--exp"><div class="item__info"><div class="item__description item__description--exp">%description%</div><div class="item__date">June 3, 2019</div></div><div class="item__value item__value--exp">%value%</div><div class="item__delete"><button class="item__delete--btn"></button></div></div>';
+                html = '<div class="item item__expense" id="exp-%id%"><img src="dist/images/arrow-exp.svg" alt="Expense Icon" class="item__icon item__icon--exp"><div class="item__info"><div class="item__description item__description--exp">%description%</div><div class="item__date">June 3, 2019</div></div><div class="item__value item__value--exp">%value%</div><div class="item__delete"><button class="item__delete--btn"></button></div></div>';
             }
             // 2. Replace the placeholder text with actual data
             newHtml = html.replace('%id%', obj.id);
@@ -137,6 +157,12 @@ const UIController = (() => {
             fieldsArr[0].focus();
         },
 
+        displayWallet: obj => {
+            document.querySelector(DOMelements.walletLabel).textContent = obj.wallet;
+            document.querySelector(DOMelements.incomesLabel).textContent = obj.totalInc;
+            document.querySelector(DOMelements.expensesLabel).textContent = obj.totalExp;
+        },
+
         getDOMelements: () => {
 
             return DOMelements;
@@ -155,7 +181,7 @@ const appController = ((walletCtrl, UICtrl) => {
         // 2. Return the state of wallet
         const wallet = walletCtrl.getWallet();
         // 3. Display the state of wallet on the user interface
-        console.log(wallet);
+        UICtrl.displayWallet(wallet);
     };
 
     const ctrlAddItem = () => {
@@ -174,6 +200,27 @@ const appController = ((walletCtrl, UICtrl) => {
         }
     };
 
+    const ctrlDeleteItem = (e) => {
+        let itemID, splitID, type, ID;
+        itemID = e.target.parentNode.parentNode.id;
+        console.log(itemID);
+
+        if (itemID) {
+            // inc-0
+            splitID = itemID.split('-');
+            type = splitID[0];
+            ID = parseInt(splitID[1]);
+            console.log(type);
+            console.log(ID);
+
+            // 1. Delete the item from the data structure
+            walletCtrl.deleteItem(type, ID);
+            // 2. Calculate and update the wallet
+            updateWallet();
+        }
+
+    };
+
     const setupEventListeners = () => {
         const DOM = UICtrl.getDOMelements();
 
@@ -190,6 +237,8 @@ const appController = ((walletCtrl, UICtrl) => {
                 ctrlAddItem();
             }
         });
+
+        document.querySelector(DOM.itemsContainer).addEventListener('click', ctrlDeleteItem);
     };
 
     return {
