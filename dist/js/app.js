@@ -170,9 +170,9 @@ const UIController = (() => {
 
             // 1. Create HTML string with placeholder text
             if (type === 'inc') {
-                html = '<div class="item item__income" id="inc-%id%"><img src="dist/images/arrow-inc.svg" alt="Income Icon" class="item__icon item__icon--inc"><div class="item__info"><div class="item__description item__description--inc">%description%</div><div class="item__date">%date%</div></div><div class="item__value item__value--inc">%value%</div><div class="item__delete"><button class="item__delete--btn"></button></div></div>'
+                html = '<div class="item item__income" id="inc-%id%"><img src="dist/images/arrow-inc.svg" alt="Income Icon" class="item__icon item__icon--inc"><div class="item__info"><div class="item__description item__description--inc">%description%</div><div class="item__date">%date%</div></div><div class="item__value item__value--inc">%value%</div><div class="right"><div class="item__delete"><button class="item__delete--btn"></button></div></div></div>'
             } else if (type === 'exp') {
-                html = '<div class="item item__expense" id="exp-%id%"><img src="dist/images/arrow-exp.svg" alt="Expense Icon" class="item__icon item__icon--exp"><div class="item__info"><div class="item__description item__description--exp">%description%</div><div class="item__date">%date%</div></div><div class="item__value item__value--exp">%value%</div><div class="item__delete"><button class="item__delete--btn"></button></div></div>';
+                html = '<div class="item item__expense" id="exp-%id%"><img src="dist/images/arrow-exp.svg" alt="Expense Icon" class="item__icon item__icon--exp"><div class="item__info"><div class="item__description item__description--exp">%description%</div><div class="item__date">%date%</div></div><div class="item__value item__value--exp">%value%</div><div class="right"><div class="item__delete"><button class="item__delete--btn"></button></div></div></div>';
             }
             // 2. Replace the placeholder text with actual data
             newHtml = html.replace('%id%', obj.id);
@@ -247,7 +247,7 @@ const appController = ((walletCtrl, UICtrl) => {
 
     const ctrlDeleteItem = (e) => {
         let itemID, splitID, type, ID;
-        itemID = e.target.parentNode.parentNode.id;
+        itemID = e.target.parentNode.parentNode.parentNode.id;
         console.log(itemID);
 
         if (itemID) {
@@ -255,8 +255,6 @@ const appController = ((walletCtrl, UICtrl) => {
             splitID = itemID.split('-');
             type = splitID[0];
             ID = parseInt(splitID[1]);
-            console.log(type);
-            console.log(ID);
 
             // 1. Delete the item from the data structure
             walletCtrl.deleteItem(type, ID);
