@@ -71,7 +71,6 @@ const walletController = (() => {
                 return item.id
             });
             const index = ids.indexOf(id);
-            console.log(ids);
 
             if (index !== -1) {
                 data.allItems[type].splice(index, 1);
@@ -110,6 +109,7 @@ const UIController = (() => {
         itemType: '.transactions__type',
         itemDescription: '.transactions__description',
         itemValue: '.transactions__value',
+        itemBtn: '.transactions__btn__icon',
         form: '.transactions__form',
         itemsContainer: '.transactions__list',
         walletLabel: '.wallet__value',
@@ -208,6 +208,21 @@ const UIController = (() => {
             document.querySelector(DOMelements.expensesLabel).textContent = formatNumber(obj.totalExp, 'exp');
         },
 
+        changeFormColors: () => {
+            const inputs = document.querySelectorAll(
+                `${DOMelements.itemType},
+                ${DOMelements.itemDescription},
+                ${DOMelements.itemValue}`
+            );
+
+            const button = document.querySelector(DOMelements.itemBtn);
+
+            [...inputs].forEach(field => field.classList.toggle('red-focus'));
+            button.src = 'dist/images/ok-exp.svg';
+
+
+        },
+
         getDOMelements: () => {
 
             return DOMelements;
@@ -248,7 +263,6 @@ const appController = ((walletCtrl, UICtrl) => {
     const ctrlDeleteItem = (e) => {
         let itemID, splitID, type, ID;
         itemID = e.target.parentNode.parentNode.parentNode.id;
-        console.log(itemID);
 
         if (itemID) {
             // inc-0
@@ -284,6 +298,8 @@ const appController = ((walletCtrl, UICtrl) => {
         });
 
         document.querySelector(DOM.itemsContainer).addEventListener('click', ctrlDeleteItem);
+
+        document.querySelector(DOM.itemType).addEventListener('change', UICtrl.changeFormColors);
     };
 
     return {

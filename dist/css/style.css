@@ -20,6 +20,9 @@ body {
   -ms-user-select: none;
   user-select: none; }
 
+.red-focus:focus {
+  border: 1px solid #ff7675 !important; }
+
 .wallet {
   padding: 3rem 0;
   background-image: url("../images/bg-small.jpg");
