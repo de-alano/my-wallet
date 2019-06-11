@@ -8,7 +8,8 @@ $color-dark-gray: #7f8c8d;
 $color-light-blue: #1C60A9;
 $color-dark-blue: #061E42;
 
-$gradient-border: 5px solid transparent;
+$gradient-border-large: 5px solid transparent;
+$gradient-border-small: 3px solid transparent;
 
 
 // FONTS
@@ -17,6 +18,29 @@ $font: 'Work Sans', sans-serif;
 // MIXINS
 @mixin transition($element) {
     transition: $element .2s ease-out;
+}
+
+// KEYFRAMES
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-20rem);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(20rem);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
 }
 
 

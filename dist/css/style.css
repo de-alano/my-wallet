@@ -1,3 +1,19 @@
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-20rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(20rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
 *,
 *::before,
 *::after {
@@ -173,7 +189,7 @@ body {
       border: 1px solid #00cec9; }
   .transactions__type {
     width: 4rem;
-    padding: 0.5rem 0 0.5rem 0.5rem;
+    padding: 0.8rem 0 0.8rem 0.5rem;
     text-align: center; }
     @media only screen and (min-width: 56.25em) {
       .transactions__type {
@@ -212,7 +228,7 @@ body {
   padding: 3rem 0; }
   @media only screen and (min-width: 56.25em) {
     .container {
-      padding: 3rem; } }
+      padding: 4rem; } }
 
 .transactions__list {
   margin: 0 auto;
@@ -225,8 +241,8 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent;
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
   background: linear-gradient(#ffffff, #ffffff) padding-box, linear-gradient(to right, #1C60A9, #061E42) border-box; }
   @media only screen and (min-width: 37.5em) {
     .item {
@@ -241,7 +257,8 @@ body {
     border-top-right-radius: 2rem;
     border-bottom-right-radius: 2rem;
     box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.2);
-    border-right: 5px solid transparent; }
+    border-right: 3px solid transparent;
+    animation: moveInLeft .8s ease-out; }
     @media only screen and (min-width: 37.5em) {
       .item__income {
         border-top-right-radius: 2.5rem;
@@ -255,7 +272,8 @@ body {
     border-top-left-radius: 2rem;
     border-bottom-left-radius: 2rem;
     box-shadow: -0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.2);
-    border-left: 5px solid transparent;
+    border-left: 3px solid transparent;
+    animation: moveInRight .8s ease-out;
     background: linear-gradient(#dfe6e9, #dfe6e9) padding-box, linear-gradient(to right, #1C60A9, #061E42) border-box; }
     @media only screen and (min-width: 37.5em) {
       .item__expense {
@@ -318,7 +336,8 @@ body {
     border: none;
     background-color: transparent;
     outline: none;
-    cursor: pointer; }
+    cursor: pointer;
+    transition: all 0.2s ease-out; }
   .item:active .item__delete--btn {
     display: block; }
   .item:active .item__info {

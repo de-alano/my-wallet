@@ -214,13 +214,16 @@ const UIController = (() => {
                 ${DOMelements.itemDescription},
                 ${DOMelements.itemValue}`
             );
+            const inputsArr = [...inputs];
 
             const button = document.querySelector(DOMelements.itemBtn);
 
-            [...inputs].forEach(field => field.classList.toggle('red-focus'));
-            button.src = 'dist/images/ok-exp.svg';
-
-
+            inputsArr.forEach(field => field.classList.toggle('red-focus'));
+            if (inputsArr[0].classList.contains('red-focus')) {
+                button.src = 'dist/images/ok-exp.svg';
+            } else {
+                button.src = 'dist/images/ok-inc.svg';
+            }
         },
 
         getDOMelements: () => {

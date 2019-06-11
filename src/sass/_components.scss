@@ -210,7 +210,7 @@
 
     &__type {
         width: 4rem;
-        padding: 0.5rem 0 0.5rem 0.5rem;
+        padding: 0.8rem 0 0.8rem 0.5rem;
         text-align: center;
 
         @media only screen and (min-width: $bp-900) {
@@ -254,26 +254,6 @@
         width: 100%;
         height: 100%;
     }
-
-    // &__title {
-    //     font-size: 1.2rem;
-    //     text-transform: uppercase;
-    //     letter-spacing: 1px;
-    //     font-weight: 200;
-    //     text-align: center;
-    //     padding: 1rem 0;
-    //     color: $color-light-blue;
-
-    //     @media only screen and (min-width: $bp-600) {
-    //         font-size: 1.4rem;
-    //         padding: 1.5rem 0;
-    //     }
-
-    //     @media only screen and (min-width: $bp-900) {
-    //         font-size: 1.6rem;
-    //         padding: 2rem 0;
-    //     }
-    // }
 }
 
 .container {
@@ -282,7 +262,7 @@
     padding: 3rem 0;
 
     @media only screen and (min-width: $bp-900) {
-        padding: 3rem;
+        padding: 4rem;
     }
 }
 
@@ -299,8 +279,8 @@
     align-items: center;
     padding: 1rem 2rem;
 
-    border-top: $gradient-border;
-    border-bottom: $gradient-border;
+    border-top: $gradient-border-small;
+    border-bottom: $gradient-border-small;
     background: linear-gradient($color-white, $color-white) padding-box, linear-gradient(to right, $color-light-blue, $color-dark-blue) border-box;
 
 
@@ -310,7 +290,7 @@
     }
 
     @media only screen and (min-width: $bp-900) {
-        border: $gradient-border;
+        border: $gradient-border-large;
     }
 
     &:not(:last-child) {
@@ -321,7 +301,8 @@
         border-top-right-radius: 2rem;
         border-bottom-right-radius: 2rem;
         box-shadow: .5rem .5rem 1rem rgba($color-black, 0.2);
-        border-right: $gradient-border;
+        border-right: $gradient-border-small;
+        animation: moveInLeft .8s ease-out;
 
         @media only screen and (min-width: $bp-600) {
             border-top-right-radius: 2.5rem;
@@ -330,7 +311,7 @@
 
         @media only screen and (min-width: $bp-900) {
             border-radius: 2.5rem;
-            border: $gradient-border;
+            border: $gradient-border-large;
         }
 
     }
@@ -340,7 +321,8 @@
         border-top-left-radius: 2rem;
         border-bottom-left-radius: 2rem;
         box-shadow: -.5rem .5rem 1rem rgba($color-black, 0.2);
-        border-left: 5px solid transparent;
+        border-left: $gradient-border-small;
+        animation: moveInRight .8s ease-out;
 
         background: linear-gradient($color-light-gray, $color-light-gray) padding-box, linear-gradient(to right, $color-light-blue, $color-dark-blue) border-box;
         
@@ -451,6 +433,7 @@
         background-color: transparent;
         outline: none;
         cursor: pointer;
+        @include transition(all);
     }
 
     &:active &__delete--btn {
