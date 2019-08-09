@@ -46,14 +46,14 @@
                 <option value="exp">_</option>
             </select>
             <input type="text" class="transactions__description" placeholder="Add description">
-            <input type="number" class="transactions__value" placeholder="Value">
+            <input class="transactions__value" placeholder="Value">
             <button type="submit" class="transactions__btn"><img src="dist/images/ok-inc.svg"
                     class="transactions__btn__icon"></button>
         </form>
 
         <div class="container">
 
-            <div class="transactions__list">
+            <div class="transactions__list" data-long-press-delay="500">
                 <!-- <div class="item item__income" id="income-0">
                     <img src="dist/images/arrow-inc.svg" alt="" class="item__icon item__icon--inc">
                     <div class="item__info">
@@ -114,7 +114,7 @@
         </div>
     </main>
 
-    <script src="dist/js/longPress.js"></script>
+    <script src="dist/js/long-press-event.min.js"></script>
     <script src="dist/js/app.js"></script>
 </body>
 

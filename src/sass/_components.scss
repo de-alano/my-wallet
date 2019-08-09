@@ -438,18 +438,18 @@
         }
     }
 
-    &:active &__delete--btn {
-        display: block;
-        opacity: 1;
-    }
+    // &:active &__delete--btn {
+    //     display: block;
+    //     opacity: 1;
+    // }
 
-    &:active &__info {
-        transform: translateX(-2rem);
-    }
+    // &:active &__info {
+    //     transform: translateX(-2rem);
+    // }
 
-    &:active &__value {
-        transform: translateX(-2rem);
-    }
+    // &:active &__value {
+    //     transform: translateX(-2rem);
+    // }
 
     @media only screen and (min-width: $bp-1200) {
         &:hover &__delete--btn {
@@ -465,6 +465,15 @@
             transform: translateX(-2rem);
         }
     }
+}
+
+.visible {
+    display: block;
+    opacity: 1;
+}
+
+.moveLeft {
+    transform: translateX(-2rem);
 }
 
 .loader {

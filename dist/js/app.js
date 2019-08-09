@@ -116,7 +116,6 @@ const UIController = (() => {
         walletLabel: '.wallet__value',
         incomesLabel: '.wallet__incomes--value',
         expensesLabel: '.wallet__expenses--value',
-        dateLabel: '.item__date',
         deleteBtn: '.item__delete--btn',
     };
 
@@ -155,6 +154,12 @@ const UIController = (() => {
 
     };
 
+    const addVisible = item => {
+        document.querySelector(item).classList.add('visible');
+        document.querySelector('.item__info').classList.add('moveLeft');
+        document.querySelector('.item__value').classList.add('moveLeft');
+    }
+
     return {
         getInput: () => {
 
@@ -171,9 +176,9 @@ const UIController = (() => {
 
             // 1. Create HTML string with placeholder text
             if (type === 'inc') {
-                html = '<div class="item item__income" id="inc-%id%" data-long-press-delay="200"><img src="dist/images/arrow-inc.svg" alt="Income Icon" class="item__icon item__icon--inc"><div class="item__info"><div class="item__description item__description--inc">%description%</div><div class="item__date">%date%</div></div><div class="item__value item__value--inc">%value%</div><div class="right"><div class="item__delete"><button class="item__delete--btn"></button></div></div></div>'
+                html = '<div class="item item__income" id="inc-%id%"><img src="dist/images/arrow-inc.svg" alt="Income Icon" class="item__icon item__icon--inc"><div class="item__info"><div class="item__description item__description--inc">%description%</div><div class="item__date">%date%</div></div><div class="item__value item__value--inc">%value%</div><div class="right"><div class="item__delete"><button class="item__delete--btn"></button></div></div></div>'
             } else if (type === 'exp') {
-                html = '<div class="item item__expense" id="exp-%id%" data-long-press-delay="200"><img src="dist/images/arrow-exp.svg" alt="Expense Icon" class="item__icon item__icon--exp"><div class="item__info"><div class="item__description item__description--exp">%description%</div><div class="item__date">%date%</div></div><div class="item__value item__value--exp">%value%</div><div class="right"><div class="item__delete"><button class="item__delete--btn"></button></div></div></div>';
+                html = '<div class="item item__expense" id="exp-%id%"><img src="dist/images/arrow-exp.svg" alt="Expense Icon" class="item__icon item__icon--exp"><div class="item__info"><div class="item__description item__description--exp">%description%</div><div class="item__date">%date%</div></div><div class="item__value item__value--exp">%value%</div><div class="right"><div class="item__delete"><button class="item__delete--btn"></button></div></div></div>';
             }
             // 2. Replace the placeholder text with actual data
             newHtml = html.replace('%id%', obj.id);
@@ -183,14 +188,21 @@ const UIController = (() => {
             // 3. Insert the HTML into the DOM
             document.querySelector(DOMelements.itemsContainer).insertAdjacentHTML('beforeend', newHtml);
 
-            const el = document.querySelector('.item__description');
 
-            el.addEventListener('long-press', (e) => {
-                e.preventDefault();
-                e.stopImmediatePropagation();
-                document.querySelector(DOMelements.deleteBtn).style.display = 'block';
+            // Add long-press event to show delete button
+            document.querySelector('.transactions__list').addEventListener('long-press', e => {
+                if (e.target && e.target.id) {
+                    addVisible(`#${e.target.id} ${DOMelements.deleteBtn}`);
+                } else if (e.target && e.target.classList.contains('item__description')) {
+                    addVisible(`#${e.target.parentNode.parentNode.id} ${DOMelements.deleteBtn}`);
+                } else if (e.target && e.target.classList.contains('item__value')) {
+                    addVisible(`#${e.target.parentNode.id} ${DOMelements.deleteBtn}`);
+                } else if (e.target && e.target.classList.contains('item__date')) {
+                    addVisible(`#${e.target.parentNode.parentNode.id} ${DOMelements.deleteBtn}`);
+                } else if (e.target && e.target.classList.contains('item__icon')) {
+                    addVisible(`#${e.target.parentNode.id} ${DOMelements.deleteBtn}`);
+                }
             });
-
         },
 
         deleteTransactionItem: selectorID => {
@@ -333,6 +345,7 @@ appController.init();
 
 //---------------------------------------------------------------------------------------------------------//
 
+
 // ---------- Preloader ---------- //
 window.addEventListener('load', () => {
     const preloader = document.querySelector('.loader');
@@ -340,3 +353,4 @@ window.addEventListener('load', () => {
         preloader.classList.add('loader-finish');
     }, 1500);
 });
+

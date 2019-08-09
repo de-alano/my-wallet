@@ -343,13 +343,6 @@ body {
       .item__delete--btn {
         width: 1.8rem;
         height: 2rem; } }
-  .item:active .item__delete--btn {
-    display: block;
-    opacity: 1; }
-  .item:active .item__info {
-    transform: translateX(-2rem); }
-  .item:active .item__value {
-    transform: translateX(-2rem); }
   @media only screen and (min-width: 75em) {
     .item:hover .item__delete--btn {
       display: block;
@@ -358,6 +351,13 @@ body {
       transform: translateX(-2rem); }
     .item:hover .item__value {
       transform: translateX(-2rem); } }
+
+.visible {
+  display: block;
+  opacity: 1; }
+
+.moveLeft {
+  transform: translateX(-2rem); }
 
 .loader {
   height: 100vh;
